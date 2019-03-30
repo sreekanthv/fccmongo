@@ -84,10 +84,11 @@ var Person = mongoose.model('Person',personSchema);
 // });
 
 var me = new Person({name: 'Sreekanth',age: '29',favoriteFoods: ['Pizza','Pathrode']});
-var createAndSavePerson = function(error,done) {  
-  if(error) done(error);
-  done(null,me);
-
+var createAndSavePerson = function(error) {  
+  if(error) {
+    console.log("Found Error saving me");
+  }
+  console.log("Saved succesfully");
 };
 
 me.save(createAndSavePerson);
