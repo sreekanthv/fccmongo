@@ -12,7 +12,7 @@
 // `mongoose`. Store your **mLab** database URI in the private `.env` file 
 // as `MONGO_URI`. Connect to the database using `mongoose.connect(<Your URI>)`
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true });
 
 /** # SCHEMAS and MODELS #
 /*  ====================== */
@@ -37,7 +37,14 @@ mongoose.connect(process.env.MONGO_URI);
 // fields, use simple validators like `required` or `unique`, and set
 // `default` values. See the [mongoose docs](http://mongoosejs.com/docs/guide.html).
 
-// <Your code here >
+// <Your code here 
+var Schema = mongoose.Schema;
+
+var personSchema = new Schema({
+  name: String,
+  age: Number,
+  favoriteFoods: [String
+});
 
 var Person /* = <Your Model> */
 
