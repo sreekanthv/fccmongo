@@ -64,11 +64,6 @@ var Person = mongoose.model('Person',personSchema);
 //   done(null, result);
 // };
 
-var callBackFunc = function(done) {
-  if(error) return done(error);
-  done(null,result);
-};
-
 /** # [C]RUD part I - CREATE #
 /*  ========================== */
 
@@ -88,6 +83,7 @@ var callBackFunc = function(done) {
 //    ...do your stuff here...
 // });
 
+var me = {name: 'Sreekanth',age: '29',favoriteFoods: ['Pizza','Pathrode']};
 var createAndSavePerson = function(done) {
   
   done(null /*, data*/);
