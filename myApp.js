@@ -41,12 +41,12 @@ mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true });
 var Schema = mongoose.Schema;
 
 var personSchema = new Schema({
-  name: String,
+  name: {type: String, required: true},
   age: Number,
-  favoriteFoods: [String
+  favoriteFoods: {type: [String], default: ['Pizza']}
 });
 
-var Person /* = <Your Model> */
+var Person = mongoose.model('Person',personSchema);
 
 // **Note**: GoMix is a real server, and in real servers interactions with
 // the db are placed in handler functions, to be called when some event happens
@@ -63,6 +63,11 @@ var Person /* = <Your Model> */
 //   if(error) return done(error);
 //   done(null, result);
 // };
+
+var callBackFunc = function(done) {
+  if(error) return done(error);
+  done(null,result);
+};
 
 /** # [C]RUD part I - CREATE #
 /*  ========================== */
